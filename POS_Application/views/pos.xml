@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/POS_Application/static/src/js/pos.js"></script>
+            <!--            <link rel="stylesheet" href="/pos_debt_notebook/static/src/css/pos.css" id="pos_debt_notebook-stylesheet"/>-->
+        </xpath>
+    </template>
+
+<!--        <template id="demo_assets_backend" inherit_id="web.assets_backend">-->
+    <!--            <xpath expr="." position="inside">-->
+    <!--                <script type="text/javascript" src="/POS_Application/static/src/js/owl.min.js"></script>-->
+    <!--            </xpath>-->
+    <!--        </template>-->
+
+</odoo>
+

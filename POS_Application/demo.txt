@@ -1,0 +1,39 @@
+odoo.define('POS_Application.ClientDetailsEditChanges', function(require) {
+    'use strict';
+    console.log("clinet::::::::::::");
+    const ClientDetailsEdit = require('point_of_sale.ClientDetailsEdit');
+    const Registries = require('point_of_sale.Registries'); //to check
+    const session = require('web.session'); //to check
+    // const _saveChanges = ClientDetailsEdit.prototype.saveChanges;
+
+    // const new_class_name = old_class_name=>class extends old_class_name
+    const NationalIdClientDetailsEdit = ClientDetailsEdit=>class extends ClientDetailsEdit {
+    // class NationalIdClientDetailsEdit extends ClientDetailsEdit {
+        /**
+         * @override
+         */
+
+        saveChanges() {
+            // if ((!this.props.partner.national_id && !this.changes.national_id) || (this.changes.national_id && (this.changes.national_id === '' || !typeof parseInt(this.changes.national_id) == 'number' || this.changes.national_id.length !== 10))) {
+            if (this.changes.national_id && this.changes.national_id.length !== 10) {
+                return this.showPopup('ErrorPopup', {
+                    title: _('10 digits are required in national_id'),
+                });
+            }
+            // if (this.changes.national_id && this.changes.national_id.length) {
+            //     const _numberExists = this.env.pos.db.search_partner(this.changes.national_id); // find out existing partner records;
+            //     if (numberExists && numberExists.length)
+            //         return this.showPopup('ErrorPopup', {
+            //             title: _('national_id already exists. Enter different national_id'),
+            //         });
+            // }
+            super.saveChanges(...arguments);
+            //             _saveChanges(...arguments);  not working
+        }
+    }
+    ;
+
+    Registries.Component.extend(ClientDetailsEdit, NationalIdClientDetailsEdit);
+
+    return ClientDetailsEdit;
+});

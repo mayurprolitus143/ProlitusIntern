@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ClientListScreen" t-inherit="point_of_sale.ClientListScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//table/thead/tr" position="inside">
+                <tr>Mobile</tr>
+        </xpath>
+    </t>
+    <t t-name="ClientListline" t-inherit="point_of_sale.ClientLine" t-inherit-mode="extension" owl="1">
+        <xpath expr="//tr" position="inside">
+            <td>
+                <t t-esc="props.partner.mobile or ''"></t>
+                <!--            props exists module-->
+                <span t-if="highlight"><br/></span>
+            </td>
+        </xpath>
+    </t>
+</templates>

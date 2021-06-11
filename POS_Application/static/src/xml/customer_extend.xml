@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template id="template" xml:space="preserve">
+    <t t-name="CustomClientDetailsEdit" t-inherit="point_of_sale.ClientDetailsEdit" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('client-detail')]/input[hasclass('client-email')]" position="after">
+            <style>
+            .label {
+              color: black;
+              font-weight: bold;
+
+                }
+              .detail {
+                    display: container;
+                }
+            </style>
+            <div class="client_detail">
+                <span class="label"> Adhaar ID </span>
+                <input class="detail client-addhaar" name="adhaar_id" type="text" t-on-change="captureChange"
+                       t-att-value="props.partner.adhaar_id || ''" placeholder="Adhaar Number"/>
+            </div>
+            <div class="client_detail">
+                <span class="label"> Voter ID </span>
+                <input class="detail client-voter_id" name="voter_id" type="text" t-on-change="captureChange"
+                       t-att-value="props.partner.voter_id || ''" placeholder="Voter-Id Number"/>
+            </div>
+            <div class="client_detail">
+                <span class="label"> Mobile </span>
+                <input class="detail client-mobile" name="mobile" type="text" t-on-change="captureChange"
+                       t-att-value="props.partner.mobile || ''" placeholder="Mobile Number"/>
+            </div>
+        </xpath>
+    </t>
+</template>
